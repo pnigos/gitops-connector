@@ -20,7 +20,13 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- bash: |
+    # Get AZCopy
+    wget -O azcopy_v10.zip https://aka.ms/downloadazcopy-v10-mac && unzip azcopy_v10.zip
+    mv azcopy_darwin_*/azcopy azcopy
+    
+    # Log in
+    export AZCOPY_SPA_CLIENT_SECRET=$(azuresdkpartnerdrops-service-principal-key)
+    azcopy login --service-principal --application-id cfb5fe52-8bb2-4901-9056-70449fa2df96
+    
+  displayName: "AzCopy"
