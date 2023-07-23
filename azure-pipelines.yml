@@ -10,12 +10,15 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: AzureCLI@2
+- task: Bash@3
   inputs:
-    azureSubscription: 'bbp(2)(114515eb-8df4-4543-b27c-be7cf14bfff9)'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az account get-access-token --resource="https://management.azure.com/"'
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      echo 'Hello world'
+      export
+      printenv
      
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
