@@ -10,6 +10,15 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: AzureCLI@2
+ displayName: Azure CLI
+ inputs:
+   azureSubscription: Azure
+   scriptType: bash
+   scriptLocation: inlineScript
+   inlineScript: |
+     az account show
+     
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
